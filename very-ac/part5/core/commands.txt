@@ -1,0 +1,7 @@
+docker compose up
+
+docker ps
+docker inspect container_id
+
+pip install psycopg2
+pip freeze > requirements.txt

@@ -1,0 +1,37 @@
+Part1
+
+docker build --tag core .
+docker run --publish 8000:8000 core
+
+Part2
+
+docker compose build
+docker  compose run --rm app django-admin startproject core .
+docker compose up
+
+part3
+
+docker compose build
+docker compose run --rm app django-admin startproject core .
+docker compose up
+docker exec -it core_container /bin/bash
+
+part4
+
+docker compose run core_app sh -c "django-admin startapp newapp ."
+docker exec -it core_app sh
+
+#Run Celery Task
+    python3 manage.py shell
+    from newapp.tasks import add
+    task = add.delay(2, 2)
+
+
+Info:
+PYTHONUNBUFFERED:
+Setting the non-empty value of PYTHONUNBUFFERED means that the python 
+output is transmitted directly to the terminal without being and that
+allows displaying the application's output in real-time.
+
+
+
